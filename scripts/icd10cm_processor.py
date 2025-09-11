@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 # Define the file path
-file_path= 'Module1_MedicalCodexes/icd/icd10cm_order_2025.txt'
+file_path= 'input/icd10cm_order_2025.txt'
 
 # This initializes a blank list to hold the parsed codes (e.g., individual rows from the text file)
 codes = []
@@ -43,10 +43,10 @@ with open(file_path, 'r', encoding='utf-8') as file:
 icdcodes = pd.DataFrame(codes)
 
 ## Save the DataFrame to a CSV file
-icdcodes.to_csv("Module1_MedicalCodexes/icd/output/icd10cm_order_2025.csv", index=False)
+icdcodes.to_csv("Module1_MedicalCodexes/icd/output/icd10cm_order_2025.csv", index=False))
 
 #new file path
-file_path_new = "HHA-507-2025/Module1_MedicalCodexes/icd/us/output/icd10cm_order_2025.csv"
+file_path_new = "input/icd10cm_order_2025.csv"
 
 # Read the file into a DataFrame
 icdcodes =pd.read_csv(file_path_new)
@@ -68,8 +68,7 @@ icdcodes = icdcodes.rename(columns={
     'Description1': 'description',
 })
 
-file_output_path = 'HHA-507-2025/Module1_MedicalCodexes/icd/us/output/icd10cm_small.csv'
-icdcodes.to_csv('HHA-507-2025/Module1_MedicalCodexes/icd/us/output/icd10cm_small.csv')
-icdcodes.to_csv('HHA-507-2025/Module1_MedicalCodexes/icd/us/output/icd10cm_small_noindex.csv', index=False)
+icdcodes.to_csv("output/icd10cm_order_2025_processed.csv")
+icdcodes.to_csv("output/icd10cm_order_2025_noindex.csv", index=False)
 
 
