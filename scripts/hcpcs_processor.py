@@ -43,4 +43,4 @@ df_hcpcs = df_hcpcs.rename(columns={
 
 file_output_path = 'output/hcpcs_full.csv'
 df_hcpcs.to_csv('output/hcpcs_full.csv')
-df_hcpcs.to_csv('output/hcpcs_full.csv', index=False)
+df_hcpcs.to_csv('output/hcpcs_full_noindec.csv', index=False)
