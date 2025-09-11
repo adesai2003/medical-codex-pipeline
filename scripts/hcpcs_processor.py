@@ -1,4 +1,9 @@
 import pandas as pd
+import logging
+
+## Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Path to the HCPCS text file
 file_path = "Module1_MedicalCodexes/hcpcs/HCPC2025_OCT_ANWEB.txt"
