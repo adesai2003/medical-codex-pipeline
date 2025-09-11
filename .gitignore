@@ -21,6 +21,7 @@ input/Loinc.csv
 input/icd102019syst_codes.txt
 input/icd102019syst_codes.txt
 input/HCPC2025_OCT_ANWEB.txt
+nput/sct2_Description_Full-en_US1000124_20250901.txt
 
 
 # Byte-compiled / optimized / DLL files
@@ -51,7 +52,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 *.csv
-*.text
+input/*.text
 *.RRF
 
 
@@ -235,4 +236,3 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-input/*.txt
