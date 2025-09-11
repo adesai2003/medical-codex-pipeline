@@ -6,7 +6,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Path to the HCPCS text file
-file_path = "Module1_MedicalCodexes/hcpcs/HCPC2025_OCT_ANWEB.txt"
+file_path = "input/HCPC2025_OCT_ANWEB 2.txt"
 
 # Read the file into a DataFrame
 # The file appears to be fixed-width formatted, so we'll use read_fwf
@@ -20,8 +20,8 @@ column_names = [
 df = pd.read_fwf(file_path, colspecs=colspecs, names=column_names)
 
 
-## save as csv to Module1_MedicalCodexes/hcpcs/output
-output_path = "Module1_MedicalCodexes/hcpcs/output/HCPC2025_OCT_ANWEB.csv"
+## save as csv 
+output_path = "input/HCPC2025_OCT_ANWEB.csv"
 df.to_csv(output_path, index=False)
 
 #print first row
@@ -41,6 +41,6 @@ df_hcpcs = df_hcpcs.rename(columns={
     'Description1': 'description',
 })
 
-file_output_path = 'HHA-507-2025/Module1_MedicalCodexes/hcpcs/output/hcpcs_small.csv'
-df_hcpcs.to_csv('HHA-507-2025/Module1_MedicalCodexes/hcpcs/output/hcpcs_small.csv')
-df_hcpcs.to_csv('HHA-507-2025/Module1_MedicalCodexes/hcpcs/output/hcpcs_small_noindex.csv', index=False)
+file_output_path = 'output/hcpcs_full.csv'
+df_hcpcs.to_csv('output/hcpcs_full.csv')
+df_hcpcs.to_csv('output/hcpcs_full.csv', index=False)
