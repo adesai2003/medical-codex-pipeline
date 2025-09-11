@@ -4,46 +4,50 @@ import re
 # Define the file path
 file_path= 'input/icd10cm_order_2025.txt'
 
-# This initializes a blank list to hold the parsed codes (e.g., individual rows from the text file)
+# This initializes a blank list to hold the parsed codes (one dict per line)
 codes = []
 
-with open(file_path, 'r', encoding='utf-8') as file:
-    for line in file:
+with open(file_path, "r", encoding="utf-8", errors="ignore") as file:
+    for i, line in enumerate(file, 1):
+        # Keep the newline out, keep spaces (they matter for fixed width)
+        line = line.rstrip("\r\n")
 
-        # Remove whitespace and check line length
-        line = line.rstrip('\n\r')
-        if len(line) < 15:  # Skip lines that are too short
+        # Skip empty/very short lines
+        if not line.strip() or len(line) < 16:
             continue
 
-        # Parse the fixed-length format based on pdf instructions
-        order_num = line[0:5].strip()  # Order number, first 6 characters
-        code = line[6:13].strip()  # ICD-10-CM code, characters 7-13
-        level = line[14:15].strip()  # Level indicator (0 or 1), character 15
+        # ---- Fixed-width slices (0-based, end-exclusive) ----
+        # First 6 characters (positions 0..5)
+        order_num = line[0:6].strip()
 
-        # Parse description and description_detailed that follows
-        remaining_text = line[16:]  # Text after position 16
-        
-        # Split by 4+ consecutive spaces to separate description from description_detailed
-        parts = re.split(r'\s{4,}', remaining_text, 1)
+        # Characters 7..13  (0-based 6..12)
+        code = line[6:13].strip()
 
-        # Extract description and description_detailed
+        # Character 15 (0-based 14)
+        level = line[14:15].strip()
+
+        # Everything after position 16 (0-based) is text
+        remaining_text = line[16:]
+
+        # Split description vs detailed description by 4+ spaces
+        parts = re.split(r"\s{4,}", remaining_text, maxsplit=1)
         description = parts[0].strip() if len(parts) > 0 else ""
         description_detailed = parts[1].strip() if len(parts) > 1 else ""
 
-        # Append the parsed data to the codes list
-        codes.append({
-            'order_num': order_num,
-            'code': code,
-            'level': level,
-            'description': description,
-            'description_detailed': description_detailed
-        })
-
+        # Only keep rows that actually have a code
+        if code:
+            codes.append({
+                "order_num": order_num,
+                "code": code,
+                "level": level,
+                "description": description,
+                "description_detailed": description_detailed
+            })
 ## Create a DataFrame from the parsed codes
 icdcodes = pd.DataFrame(codes)
 
 ## Save the DataFrame to a CSV file
-icdcodes.to_csv("Module1_MedicalCodexes/icd/output/icd10cm_order_2025.csv", index=False))
+icdcodes.to_csv("output/icd10cm_order_2025.csv")
 
 #new file path
 file_path_new = "input/icd10cm_order_2025.csv"
