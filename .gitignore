@@ -52,7 +52,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 *.csv
-*.text
+input/*.text
 *.RRF
 
 
