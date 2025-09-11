@@ -6,7 +6,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Path to the HCPCS text file
-file_path = "input/HCPC2025_OCT_ANWEB 2.txt"
+file_path = "input/HCPC2025_OCT_ANWEB.txt"
 
 # Read the file into a DataFrame
 # The file appears to be fixed-width formatted, so we'll use read_fwf
