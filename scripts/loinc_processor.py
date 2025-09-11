@@ -1,7 +1,7 @@
 import pandas as pd 
 
 ## Input/Loinc.csv
-loinc = pd.read_csv('HHA-507-2025/Module1_MedicalCodexes/loinc/Loinc.csv')
+loinc = pd.read_csv('input/Loinc.csv')
 
 ### Info to describe 
 loinc.info()
@@ -30,8 +30,8 @@ loinc_small = loinc_small.rename(columns={
     'LONG_COMMON_NAME': 'description',
 })
 
-file_output_path = 'HHA-507-2025/Module1_MedicalCodexes/loinc/output/loinc_small.csv'
+file_output_path = 'output/loinc_small.csv'
 
-loinc_small.to_csv('HHA-507-2025/Module1_MedicalCodexes/loinc/output/loinc_small.csv')
+loinc_small.to_csv('output/loinc_small.csv')
 
-loinc_small.to_csv('HHA-507-2025/Module1_MedicalCodexes/loinc/output/loinc_small_noindex.csv', index=False)
+loinc_small.to_csv('output/loinc_small_noindex.csv', index=False)
