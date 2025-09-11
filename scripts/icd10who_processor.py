@@ -1,6 +1,6 @@
 import pandas as pd
 
-file_path = 'HHA-507-2025/Module1_MedicalCodexes/icd/who/icd102019syst_codes.txt'
+file_path = 'input/icd102019syst_codes.txt'
 
 columns = ['level', 'type', 'usage', 'sort', 'parent', 'code', 'display_code', 
            'icd10_code', 'title_en', 'parent_title', 'detailed_title', 
@@ -9,7 +9,7 @@ columns = ['level', 'type', 'usage', 'sort', 'parent', 'code', 'display_code',
 
 icdcodeswho = pd.read_csv(file_path, sep=';', header=None, names=columns)
 
-output_path = 'HHA-507-2025/Module1_MedicalCodexes/icd/who/output/icd10who.csv'
+output_path = 'output/icd10who_full.csv'
 icdcodeswho.to_csv(output_path, index=False)
 
 
