@@ -51,7 +51,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-*.csv
 input/*.text
 *.RRF
 
