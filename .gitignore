@@ -16,6 +16,11 @@ Module1_MedicalCodexes/rxnorm/output/RXNATOMARCHIVE.csv
 Module1_MedicalCodexes/snowmed/sct2_Description_Full-en_US1000124_20250301.txt
 Module1_MedicalCodexes/snowmed/output/sct2_Description_Full.csv
 Medical-codexes-pipeline/outputs/
+input/sct2_Description_Full-en_US1000124_20250901.txt
+input/Loinc.csv
+input/icd102019syst_codes.txt
+input/icd102019syst_codes.txt
+input/HCPC2025_OCT_ANWEB.txt
 
 
 # Byte-compiled / optimized / DLL files
