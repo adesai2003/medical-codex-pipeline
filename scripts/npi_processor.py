@@ -2,7 +2,7 @@ import polars as pl
 import pandas as pd
 import time
 
-npi_file_path = 'HHA-507-2025/Module1_MedicalCodexes/npi/npidata_pfile_20050523-20250810.csv'
+npi_file_path = 'input/npidata_pfile_20050523-20250907.csv'
 
 ## just load the first n rows
 start_time_polars = time.time()
@@ -40,8 +40,8 @@ df_polars_small = df_polars_small.rename({
 
 
 ## save to parquet
-df_polars_small.write_parquet('HHA-507-2025/Module1_MedicalCodexes/npi/output/npi_small.parquet')
+df_polars_small.write_parquet('output/npi_small.parquet')
 
 #turn parquet back into csv
-df_from_parquet = pl.read_parquet('HHA-507-2025/Module1_MedicalCodexes/npi/output/npi_small.parquet')
-df_from_parquet.write_csv('HHA-507-2025/Module1_MedicalCodexes/npi/output/npi_small_from_parquet.csv')
+df_from_parquet = pl.read_parquet('output/npi_small.parquet')
+df_from_parquet.write_csv('output/npi_small_from_parquet.csv')
