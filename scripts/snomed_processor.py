@@ -1,7 +1,7 @@
 import polars as pl
 from pathlib import Path
 
-file_path = Path('HHA-507-2025/Module1_MedicalCodexes/snowmed/sct2_Description_Full-en_US1000124_20250901.txt')
+file_path = Path('input/sct2_Description_Full-en_US1000124_20250901.txt')
 
 df_snowmed = pl.read_csv(
     file_path,
@@ -23,14 +23,14 @@ df_snowmed = pl.read_csv(
     }
 )
 
-output_dir = Path('HHA-507-2025/Module1_MedicalCodexes/snowmed/output')
+output_dir = Path('output')
 output_dir.mkdir(exist_ok=True)
 output_path = output_dir / 'sct2_Description_Full.csv'
 
 df_snowmed.write_csv(output_path)
 
 ##create a new file path to read in the csv we just created
-new_file_path = Path('HHA-507-2025/Module1_MedicalCodexes/snowmed/output/sct2_Description_Full.csv')
+new_file_path = Path('output/sct2_Description_Full.csv')
 
 ### create dataframe from csv
 df_snowmed = pl.read_csv(new_file_path)
@@ -55,8 +55,8 @@ df_snowmed = df_snowmed.rename({
 
 
 ## save to parquet
-df_snowmed.write_parquet('HHA-507-2025/Module1_MedicalCodexes/snowmed/output/snowmed_small.parquet')
+df_snowmed.write_parquet('output/snowmed_small.parquet')
 
 #turn parquet back into csv
-df_from_parquet = pl.read_parquet('HHA-507-2025/Module1_MedicalCodexes/snowmed/output/snowmed_small.parquet')
-df_from_parquet.write_csv('HHA-507-2025/Module1_MedicalCodexes/snowmed/output/snowmed_small_from_parquet.csv')
+df_from_parquet = pl.read_parquet('output/snowmed_small.parquet')
+df_from_parquet.write_csv('output/snowmed_small_from_parquet.csv')
