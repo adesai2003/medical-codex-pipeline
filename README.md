@@ -197,4 +197,4 @@ step 6: commit to githib using
 ### OUTPUTS
 ## The files were too big to commit to github so I put them in my google drive and submitted my public google drive link below. 
 
-[text](https://drive.google.com/drive/folders/1XrMS8uZqQA6xZPy62udnvAHk-ZkfSK0c?usp=sharing)
+[https://drive.google.com/drive/folders/1XrMS8uZqQA6xZPy62udnvAHk-ZkfSK0c?usp=sharing](https://drive.google.com/drive/folders/1XrMS8uZqQA6xZPy62udnvAHk-ZkfSK0c?usp=sharing)
