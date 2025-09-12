@@ -1,14 +1,20 @@
 import pandas as pd
 import logging
-
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s"
+)
 ## Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logging.info("Starting HCPCS processing script")
 
 # Path to the HCPCS text file
 file_path = "input/HCPC2025_OCT_ANWEB.txt"
 
+logging.info(f"Reading HCPCS data from {file_path}")
+
+
 # Read the file into a DataFrame
+
 # The file appears to be fixed-width formatted, so we'll use read_fwf
 
 # You may need to adjust colspecs based on actual column widths
@@ -19,10 +25,13 @@ column_names = [
 ]
 df = pd.read_fwf(file_path, colspecs=colspecs, names=column_names)
 
+logging.info("HCPCS data read into DataFrame")
 
 ## save as csv 
 output_path = "input/HCPC2025_OCT_ANWEB.csv"
 df.to_csv(output_path, index=False)
+
+logging.info(f"HCPCS data saved to {output_path}")
 
 #print first row
 df.iloc[0]
@@ -33,14 +42,22 @@ df.Description1
 
 df_hcpcs = df[['Code', 'Description1']]
 
+logging.info("Selected relevant columns from HCPCS data")
+
 ##add in a last_updated column
 df_hcpcs['last_updated'] = '2025-09-03'
 
+##rename columns
 df_hcpcs = df_hcpcs.rename(columns={
     'Code': 'code',
     'Description1': 'description',
 })
 
+logging.info("Renamed columns and added last_updated column")
+
+#save to csv
 file_output_path = 'output/hcpcs_full.csv'
 df_hcpcs.to_csv('output/hcpcs_full.csv')
 df_hcpcs.to_csv('output/hcpcs_full_noindec.csv', index=False)
+
+logging.info(f"HCPCS processed data saved to {file_output_path}")
